@@ -4,11 +4,18 @@
         <link>http://example.org/posts/</link>
         <description>所有文章 | 肉蛋葱鸡肉粥🍛的博客☕</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 09 Nov 2021 17:01:53 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>First_post</title>
+    <title>想要和我一样吗？</title>
     <link>http://example.org/posts/first_post/</link>
     <pubDate>Tue, 09 Nov 2021 17:01:53 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://example.org/posts/first_post/</guid>
     <description><![CDATA[##彭于晏是怎样练成的，请看下回分解##]]></description>
+</item><item>
+    <title>html&amp;css基础知识</title>
+    <link>http://example.org/posts/htmlcss%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+    <pubDate>Mon, 08 Nov 2021 17:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/posts/htmlcss%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+    <description><![CDATA[meta标签作用 设置网页字符集 设置keywords 设置网页描述信息 网页重定向 设置移动端的视口大小 &lt;!DOCTYPE html&gt;//代表网页版本是HTML]]></description>
 </item></channel>
 </rss>
