@@ -3,7 +3,14 @@
         <title>肉蛋葱鸡肉粥🍛的博客☕</title>
         <link>http://example.org/</link>
         <description>肉蛋葱鸡肉粥🍛的博客☕</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 09 Nov 2021 17:01:53 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
-        </channel>
+        <item>
+    <title>First_post</title>
+    <link>http://example.org/posts/first_post/</link>
+    <pubDate>Tue, 09 Nov 2021 17:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/posts/first_post/</guid>
+    <description><![CDATA[##彭于晏是怎样练成的，请看下回分解##]]></description>
+</item></channel>
 </rss>
