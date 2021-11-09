@@ -51,4 +51,5 @@
             <loc>http://example.org/categories/css/</loc><lastmod>2021-11-08T17:01:53&#43;08:00</lastmod></url><url>
             <loc>http://example.org/tags/html/</loc><lastmod>2021-11-08T17:01:53&#43;08:00</lastmod></url><url>
             <loc>http://example.org/categories/html/</loc><lastmod>2021-11-08T17:01:53&#43;08:00</lastmod></url><url>
-            <loc>http://example.org/posts/htmlcss%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc><lastmod>2021-11-08T17:01:53&#43;08:00</lastmod></url></urlset>
+            <loc>http://example.org/posts/htmlcss%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc><lastmod>2021-11-08T17:01:53&#43;08:00</lastmod></url><url>
+            <loc>http://example.org/about/</loc><lastmod>2021-11-08T11:04:49&#43;08:00</lastmod></url></urlset>

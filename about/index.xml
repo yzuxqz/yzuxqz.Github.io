@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on 肉蛋葱鸡肉粥🍛的博客☕</title>
+    <link>http://example.org/about/</link>
+    <description>Recent content in Abouts on 肉蛋葱鸡肉粥🍛的博客☕</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>1336352883@qq.com (yzuxqz)</managingEditor>
+    <webMaster>1336352883@qq.com (yzuxqz)</webMaster>
+    <lastBuildDate>Mon, 08 Nov 2021 11:04:49 +0800</lastBuildDate><atom:link href="http://example.org/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About me</title>
+      <link>http://example.org/about/about/</link>
+      <pubDate>Mon, 08 Nov 2021 11:04:49 +0800</pubDate>
+      <author>1336352883@qq.com (yzuxqz)</author>
+      <guid>http://example.org/about/about/</guid>
+      <description>本人介绍 扬州大学毕业 兴趣方向：同彭于晏 教育经历 2017/09 - 2021/06: 扬州大学 软件工程专业 / YangZhou University Software Engineering 获奖经历 * 项目经历 2021/07 - 至今：顶点软件crm系统开发，基于u</description>
+    </item>
+    
+  </channel>
+</rss>
