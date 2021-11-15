@@ -354,7 +354,7 @@ for(int i=0;i<arr.length;i++){
 
 ```java
 //1.静态初始化
-//String[][] arrs = new String[][]{{"123","456"},{},{}}
+//String[][] arrs = new String[][]{{"123","456"}}
 //2.动态初始化
 int[][] arrs1 = new int[5][2]
 ```
