@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>webpack - 肉蛋葱鸡肉粥🍛的博客☕</title><meta name="Description" content=""><meta property="og:title" content="webpack" />
+<meta property="og:description" content="入口 指示webpack使用哪个模块，来作为构建其内部依赖图的开始 在webpack.config.js 对象写法（可扩展性高） 1 2 3 4 5 6 7 8 9" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/webpack/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-05T10:41:53+08:00" />
+<meta property="article:modified_time" content="2021-08-05T10:41:53+08:00" /><meta property="og:site_name" content="肉蛋葱鸡肉粥🍛的博客☕" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="webpack"/>
+<meta name="twitter:description" content="入口 指示webpack使用哪个模块，来作为构建其内部依赖图的开始 在webpack.config.js 对象写法（可扩展性高） 1 2 3 4 5 6 7 8 9"/>
+<meta name="application-name" content="肉蛋葱鸡肉粥🍛的博客☕">
+<meta name="apple-mobile-web-app-title" content="肉蛋葱鸡肉粥🍛的博客☕"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/webpack/" /><link rel="prev" href="http://example.org/posts/vue/" /><link rel="next" href="http://example.org/posts/react/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "webpack",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/posts\/webpack\/"
+        },"genre": "posts","keywords": "webapck, 打包工具","wordcount":  870 ,
+        "url": "http:\/\/example.org\/posts\/webpack\/","datePublished": "2021-08-05T10:41:53+08:00","dateModified": "2021-08-05T10:41:53+08:00","publisher": {
+            "@type": "Organization",
+            "name": "yzuxqz"},"author": {
+                "@type": "Person",
+                "name": "yzuxqz"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="肉蛋葱鸡肉粥🍛的博客☕">肉蛋葱鸡肉粥🍛的博客☕</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/webpack/" selected>简体中文</option></select>
+                    </a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="肉蛋葱鸡肉粥🍛的博客☕">肉蛋葱鸡肉粥🍛的博客☕</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/webpack/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">webpack</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/yzuxqz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>yzuxqz</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/webapck/"><i class="far fa-folder fa-fw"></i>webapck</a>&nbsp;<a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-05">2021-08-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 870 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#入口">入口</a>
+      <ul>
+        <li><a href="#描述入口对象属性">描述入口对象属性</a></li>
+      </ul>
+    </li>
+    <li><a href="#输出">输出</a></li>
+    <li><a href="#loader">loader</a>
+      <ul>
+        <li><a href="#配置方式">配置方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#plugin">plugin</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#模式">模式</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="入口">入口</h2>
+<p>指示webpack使用哪个模块，来作为构建其内部依赖图的开始</p>
+<p>在webpack.config.js</p>
+<ol>
+<li>对象写法（可扩展性高）</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">a2</span><span class="o">:</span> <span class="s1">&#39;dependingfile.js&#39;</span><span class="p">,</span>
+    <span class="nx">b2</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">dependOn</span><span class="o">:</span> <span class="s1">&#39;a2&#39;</span><span class="p">,</span>
+      <span class="kr">import</span><span class="o">:</span> <span class="s1">&#39;./src/app.js&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2.单入口写法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">main</span><span class="o">:</span> <span class="s1">&#39;./path/to/my/entry/file.js&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;./src/file_1.js&#39;</span><span class="p">,</span> <span class="s1">&#39;./src/file_2.js&#39;</span><span class="p">],</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;bundle.js&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="描述入口对象属性">描述入口对象属性</h3>
+<ol>
+<li>
+<p>dependOn：当前入口所依赖的入口，必须在该入口被加载前被加载</p>
+</li>
+<li>
+<p>runtime：运行时 chunk 的名字。如果设置了，就会创建一个新的运行时 chunk。在 webpack 5.43.0 之后可将其设为 <code>false</code> 以避免一个新的运行时 chunk。</p>
+<ul>
+<li>
+<p><code>runtime</code> 和 <code>dependOn</code> 不应在同一个入口上同时使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">a2</span><span class="o">:</span> <span class="s1">&#39;./a&#39;</span><span class="p">,</span>
+    <span class="nx">b2</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">runtime</span><span class="o">:</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span>
+      <span class="nx">dependOn</span><span class="o">:</span> <span class="s1">&#39;a2&#39;</span><span class="p">,</span>
+      <span class="kr">import</span><span class="o">:</span> <span class="s1">&#39;./b&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>runtime</code> 不能指向已存在的入口名称</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">a1</span><span class="o">:</span> <span class="s1">&#39;./a&#39;</span><span class="p">,</span>
+    <span class="nx">b1</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">runtime</span><span class="o">:</span> <span class="s1">&#39;a1&#39;</span><span class="p">,</span>
+      <span class="kr">import</span><span class="o">:</span> <span class="s1">&#39;./b&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>dependOn</code> 不能是循环引用的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">module.exports = {
+  entry: {
+    a3: {
+      import: &#39;./a&#39;,
+      dependOn: &#39;b3&#39;,
+    },
+    b3: {
+      import: &#39;./b&#39;,
+      dependOn: &#39;a3&#39;,
+    },
+  },
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ol>
+<h2 id="输出">输出</h2>
+<ol>
+<li>
+<p>使用入口(此chunk的名称)名称</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...
+</span><span class="c1"></span>  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].bundle.js&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用内部chunk id</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...
+</span><span class="c1"></span>  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[id].bundle.js&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>同时配置多个入口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;./src/app.js&#39;</span><span class="p">,</span>
+    <span class="nx">search</span><span class="o">:</span> <span class="s1">&#39;./src/search.js&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].js&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/dist&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="loader">loader</h2>
+<p>使用loader告诉webpack加载css文件或者解析ts</p>
+<ol>
+<li>
+<p>首先安装loader：npm install &ndash;save-dev css-loader ts-loader</p>
+</li>
+<li>
+<p>webpack配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span> <span class="nx">use</span><span class="o">:</span> <span class="s1">&#39;css-loader&#39;</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.ts$/</span><span class="p">,</span> <span class="nx">use</span><span class="o">:</span> <span class="s1">&#39;ts-loader&#39;</span> <span class="p">},</span>
+    <span class="p">],</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="配置方式">配置方式</h3>
+<p><a href="https://webpack.docschina.org/configuration/module/#modulerules" target="_blank" rel="noopener noreffer"><code>module.rules</code></a> 允许在 webpack 配置中指定多个 loader，loader 从右到左（或从下到上）地取值(evaluate)/执行(execute)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="c1">// [style-loader](/loaders/style-loader)
+</span><span class="c1"></span>          <span class="p">{</span> <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;style-loader&#39;</span> <span class="p">},</span>
+          <span class="c1">// [css-loader](/loaders/css-loader)
+</span><span class="c1"></span>          <span class="p">{</span>
+            <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;css-loader&#39;</span><span class="p">,</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">modules</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="c1">// [sass-loader](/loaders/sass-loader)
+</span><span class="c1"></span>          <span class="p">{</span> <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;sass-loader&#39;</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="plugin">plugin</h2>
+<p>插件可以携带参数，必须在webpack配置中，向plugins属性传入一个new实例。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;html-webpack-plugin&#39;</span><span class="p">);</span> <span class="c1">// 通过 npm 安装
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpack&#39;</span><span class="p">);</span> <span class="c1">// 访问内置的插件
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./path/to/my/entry/file.js&#39;</span><span class="p">,</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;my-first-webpack.bundle.js&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">),</span>
+  <span class="p">},</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(js|jsx)$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">],</span>
+  <span class="p">},</span>
+  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">ProgressPlugin</span><span class="p">(),</span>
+    <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span> <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;./src/index.html&#39;</span> <span class="p">}),</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="配置">配置</h2>
+<p>webpack的配置文件是JavaScript文件，文件内导出webpack配置对象。webpack会根据该配置定义的属性进行处理。</p>
+<h2 id="模式">模式</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/posts/webpack/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://example.org/posts/webpack/" data-title="webpack" data-via="xxxx" data-hashtags="webapck,打包工具"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://example.org/posts/webpack/" data-hashtag="webapck"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/webpack/" data-title="webpack" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://example.org/posts/webpack/" data-title="webpack"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://example.org/posts/webpack/" data-title="webpack"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="http://example.org/posts/webpack/" data-title="webpack" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="http://example.org/posts/webpack/" data-title="webpack" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="http://example.org/posts/webpack/" data-title="webpack"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/webapck/">webapck</a>,&nbsp;<a href="/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/">打包工具</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/vue/" class="prev" rel="prev" title="vue"><i class="fas fa-angle-left fa-fw"></i>vue</a>
+            <a href="/posts/react/" class="next" rel="next" title="react">react<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/yzuxqz" target="_blank">yzuxqz</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
