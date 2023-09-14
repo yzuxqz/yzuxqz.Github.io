@@ -10,15 +10,14 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/react%E6%89%A9%E5%B1%95/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-09-02T10:42:53+08:00" />
-<meta property="article:modified_time" content="2021-09-02T10:42:53+08:00" /><meta property="og:site_name" content="肉蛋葱鸡肉粥🍛的博客☕" />
-
+<meta property="article:modified_time" content="2021-09-02T10:42:53+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="react扩展"/>
 <meta name="twitter:description" content="1. setState setState更新状态的2种写法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 (1). setState(stateChange, [callback])------对象式的setState 1.sta"/>
 <meta name="application-name" content="肉蛋葱鸡肉粥🍛的博客☕">
 <meta name="apple-mobile-web-app-title" content="肉蛋葱鸡肉粥🍛的博客☕"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/react%E6%89%A9%E5%B1%95/" /><link rel="prev" href="http://example.org/posts/reacthooks/" /><link rel="next" href="http://example.org/posts/first_post/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/react%E6%89%A9%E5%B1%95/" /><link rel="prev" href="http://example.org/posts/reacthooks/" /><link rel="next" href="http://example.org/posts/c5-react%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/posts\/react%E6%89%A9%E5%B1%95\/"
-        },"genre": "posts","keywords": "react, react优化","wordcount":  2636 ,
+        },"genre": "posts","keywords": "react, react优化","wordcount":  2635 ,
         "url": "http:\/\/example.org\/posts\/react%E6%89%A9%E5%B1%95\/","datePublished": "2021-09-02T10:42:53+08:00","dateModified": "2021-09-02T10:42:53+08:00","publisher": {
             "@type": "Organization",
             "name": "yzuxqz"},"author": {
@@ -80,8 +79,8 @@
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">react扩展</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/yzuxqz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>yzuxqz</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/react/"><i class="far fa-folder fa-fw"></i>react</a>&nbsp;<a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-02">2021-09-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2636 字&nbsp;
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/yzuxqz" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>yzuxqz</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/react/"><i class="far fa-folder fa-fw"></i>react</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-02">2021-09-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2635 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -189,22 +188,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">	(1). setState(stateChange, [callback])------对象式的setState
-            1.stateChange为状态改变对象(该对象可以体现出状态的更改)
-            2.callback是可选的回调函数, 它在状态更新完毕、界面也更新后(render调用后)才被调用
-					
-	(2). setState(updater, [callback])------函数式的setState
-            1.updater为返回stateChange对象的函数。
-            2.updater可以接收到state和props。
-            4.callback是可选的回调函数, 它在状态更新、界面也更新后(render调用后)才被调用。
-总结:
-		1.对象式的setState是函数式的setState的简写方式(语法糖)
-		2.使用原则：
-				(1).如果新状态不依赖于原状态 ===&gt; 使用对象方式
-				(2).如果新状态依赖于原状态 ===&gt; 使用函数方式
-				(3).如果需要在setState()执行后获取最新的状态数据, 
-					要在第二个callback函数中读取
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">	(1). setState(stateChange, [callback])------对象式的setState
+</span></span><span class="line"><span class="cl">            1.stateChange为状态改变对象(该对象可以体现出状态的更改)
+</span></span><span class="line"><span class="cl">            2.callback是可选的回调函数, 它在状态更新完毕、界面也更新后(render调用后)才被调用
+</span></span><span class="line"><span class="cl">					
+</span></span><span class="line"><span class="cl">	(2). setState(updater, [callback])------函数式的setState
+</span></span><span class="line"><span class="cl">            1.updater为返回stateChange对象的函数。
+</span></span><span class="line"><span class="cl">            2.updater可以接收到state和props。
+</span></span><span class="line"><span class="cl">            4.callback是可选的回调函数, 它在状态更新、界面也更新后(render调用后)才被调用。
+</span></span><span class="line"><span class="cl">总结:
+</span></span><span class="line"><span class="cl">		1.对象式的setState是函数式的setState的简写方式(语法糖)
+</span></span><span class="line"><span class="cl">		2.使用原则：
+</span></span><span class="line"><span class="cl">				(1).如果新状态不依赖于原状态 ===&gt; 使用对象方式
+</span></span><span class="line"><span class="cl">				(2).如果新状态依赖于原状态 ===&gt; 使用函数方式
+</span></span><span class="line"><span class="cl">				(3).如果需要在setState()执行后获取最新的状态数据, 
+</span></span><span class="line"><span class="cl">					要在第二个callback函数中读取
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -216,19 +215,17 @@
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">//第二种 , 有两种写法 区别在于括号
-</span><span class="c1"></span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">preState</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="p">{</span><span class="nx">isAuthenticated</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">isAuthen</span><span class="p">}</span>
-                <span class="p">});</span>
-                
-<span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">preState</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
-                    <span class="nx">isAuthenticated</span><span class="o">:</span> <span class="o">!</span><span class="nx">preState</span><span class="p">.</span><span class="nx">isAuthenticated</span>
-                <span class="p">}));</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//第二种 , 有两种写法 区别在于括号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">preState</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="p">{</span><span class="nx">isAuthenticated</span><span class="o">:</span> <span class="nx">props</span><span class="p">.</span><span class="nx">isAuthen</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">preState</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">isAuthenticated</span><span class="o">:</span> <span class="o">!</span><span class="nx">preState</span><span class="p">.</span><span class="nx">isAuthenticated</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="2-lazyload">2. lazyLoad</h2>
@@ -247,17 +244,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js">	<span class="c1">//1.通过React的lazy函数配合import()函数动态加载路由组件 ===&gt; 路由组件代码会被分开打包
-</span><span class="c1"></span>	<span class="kr">const</span> <span class="nx">Login</span> <span class="o">=</span> <span class="nx">lazy</span><span class="p">(()=&gt;</span><span class="kr">import</span><span class="p">(</span><span class="s1">&#39;@/pages/Login&#39;</span><span class="p">))</span>
-	
-	<span class="c1">//2.通过&lt;Suspense&gt;指定在加载得到路由打包文件前显示一个自定义loading界面
-</span><span class="c1"></span>	<span class="o">&lt;</span><span class="nx">Suspense</span> <span class="nx">fallback</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">loading</span><span class="p">.....</span><span class="o">&lt;</span><span class="err">/h1&gt;}&gt;</span>
-        <span class="o">&lt;</span><span class="nx">Switch</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&#34;/xxx&#34;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Xxxx</span><span class="p">}</span><span class="o">/&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&#34;/login&#34;</span><span class="o">/&gt;</span>
-        <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
-    <span class="o">&lt;</span><span class="err">/Suspense&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">	<span class="c1">//1.通过React的lazy函数配合import()函数动态加载路由组件 ===&gt; 路由组件代码会被分开打包
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kr">const</span> <span class="nx">Login</span> <span class="o">=</span> <span class="nx">lazy</span><span class="p">(()=&gt;</span><span class="kr">import</span><span class="p">(</span><span class="s1">&#39;@/pages/Login&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1">//2.通过&lt;Suspense&gt;指定在加载得到路由打包文件前显示一个自定义loading界面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">&lt;</span><span class="nx">Suspense</span> <span class="nx">fallback</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">loading</span><span class="p">.....</span><span class="o">&lt;</span><span class="err">/h1&gt;}&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="nx">Switch</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&#34;/xxx&#34;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Xxxx</span><span class="p">}</span><span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span><span class="nx">Redirect</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&#34;/login&#34;</span><span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/Suspense&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-hooks">3. Hooks</h2>
@@ -268,9 +265,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(1). Hook是React 16.8.0版本增加的新特性/新语法
-(2). 可以让你在函数组件中使用 state 以及其他的 React 特性
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(1). Hook是React 16.8.0版本增加的新特性/新语法
+</span></span><span class="line"><span class="cl">(2). 可以让你在函数组件中使用 state 以及其他的 React 特性
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="2-三个常用的hook">2. 三个常用的Hook</h4>
 <div class="highlight"><div class="chroma">
@@ -280,10 +277,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(1). State Hook: React.useState()
-(2). Effect Hook: React.useEffect()
-(3). Ref Hook: React.useRef()
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(1). State Hook: React.useState()
+</span></span><span class="line"><span class="cl">(2). Effect Hook: React.useEffect()
+</span></span><span class="line"><span class="cl">(3). Ref Hook: React.useRef()
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="3-state-hook">3. State Hook</h4>
 <div class="highlight"><div class="chroma">
@@ -298,15 +295,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(1). State Hook让函数组件也可以有state状态, 并进行状态数据的读写操作
-(2). 语法: const [xxx, setXxx] = React.useState(initValue)  
-(3). useState()说明:
-        参数: 第一次初始化指定的值在内部作缓存
-        返回值: 包含2个元素的数组, 第1个为内部当前状态值, 第2个为更新状态值的函数
-(4). setXxx()2种写法:
-        setXxx(newValue): 参数为非函数值, 直接指定新的状态值, 内部用其覆盖原来的状态值
-        setXxx(value =&gt; newValue): 参数为函数, 接收原本的状态值, 返回新的状态值, 内部用其覆盖原来的状态值
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(1). State Hook让函数组件也可以有state状态, 并进行状态数据的读写操作
+</span></span><span class="line"><span class="cl">(2). 语法: const [xxx, setXxx] = React.useState(initValue)  
+</span></span><span class="line"><span class="cl">(3). useState()说明:
+</span></span><span class="line"><span class="cl">        参数: 第一次初始化指定的值在内部作缓存
+</span></span><span class="line"><span class="cl">        返回值: 包含2个元素的数组, 第1个为内部当前状态值, 第2个为更新状态值的函数
+</span></span><span class="line"><span class="cl">(4). setXxx()2种写法:
+</span></span><span class="line"><span class="cl">        setXxx(newValue): 参数为非函数值, 直接指定新的状态值, 内部用其覆盖原来的状态值
+</span></span><span class="line"><span class="cl">        setXxx(value =&gt; newValue): 参数为函数, 接收原本的状态值, 返回新的状态值, 内部用其覆盖原来的状态值
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="4-effect-hook">4. Effect Hook</h4>
 <div class="highlight"><div class="chroma">
@@ -330,24 +327,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(1). Effect Hook 可以让你在函数组件中执行副作用操作(用于模拟类组件中的生命周期钩子)
-(2). React中的副作用操作:
-        发ajax请求数据获取
-        设置订阅 / 启动定时器
-        手动更改真实DOM
-(3). 语法和说明: 
-        useEffect(() =&gt; { 
-          // 在此可以执行任何带副作用操作
-          return () =&gt; { // 在组件卸载前执行
-            // 在此做一些收尾工作, 比如清除定时器/取消订阅等
-          }
-        }, [stateValue]) // 如果指定的是[], 回调函数只会在第一次render()后执行
-    
-(4). 可以把 useEffect Hook 看做如下三个函数的组合
-        componentDidMount()
-        componentDidUpdate()
-    	componentWillUnmount() 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(1). Effect Hook 可以让你在函数组件中执行副作用操作(用于模拟类组件中的生命周期钩子)
+</span></span><span class="line"><span class="cl">(2). React中的副作用操作:
+</span></span><span class="line"><span class="cl">        发ajax请求数据获取
+</span></span><span class="line"><span class="cl">        设置订阅 / 启动定时器
+</span></span><span class="line"><span class="cl">        手动更改真实DOM
+</span></span><span class="line"><span class="cl">(3). 语法和说明: 
+</span></span><span class="line"><span class="cl">        useEffect(() =&gt; { 
+</span></span><span class="line"><span class="cl">          // 在此可以执行任何带副作用操作
+</span></span><span class="line"><span class="cl">          return () =&gt; { // 在组件卸载前执行
+</span></span><span class="line"><span class="cl">            // 在此做一些收尾工作, 比如清除定时器/取消订阅等
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        }, [stateValue]) // 如果指定的是[], 回调函数只会在第一次render()后执行
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">(4). 可以把 useEffect Hook 看做如下三个函数的组合
+</span></span><span class="line"><span class="cl">        componentDidMount()
+</span></span><span class="line"><span class="cl">        componentDidUpdate()
+</span></span><span class="line"><span class="cl">    	componentWillUnmount() 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="5-ref-hook">5. Ref Hook</h4>
 <div class="highlight"><div class="chroma">
@@ -357,10 +354,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">(1). Ref Hook可以在函数组件中存储/查找组件内的标签或任意其它数据
-(2). 语法: const refContainer = useRef()
-(3). 作用:保存标签对象,功能与React.createRef()一样
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(1). Ref Hook可以在函数组件中存储/查找组件内的标签或任意其它数据
+</span></span><span class="line"><span class="cl">(2). 语法: const refContainer = useRef()
+</span></span><span class="line"><span class="cl">(3). 作用:保存标签对象,功能与React.createRef()一样
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-fragment">4. Fragment</h2>
@@ -405,29 +402,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="mi">1</span><span class="p">)</span> <span class="nx">创建Context容器对象</span><span class="err">：</span>
-	<span class="kr">const</span> <span class="nx">XxxContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">()</span>  
-	
-<span class="mi">2</span><span class="p">)</span> <span class="nx">渲染子组时</span><span class="err">，</span><span class="nx">外面包裹xxxContext</span><span class="p">.</span><span class="nx">Provider</span><span class="p">,</span> <span class="nx">通过value属性给后代组件传递数据</span><span class="err">：</span>
-	<span class="o">&lt;</span><span class="nx">xxxContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">数据</span><span class="p">}</span><span class="o">&gt;</span>
-		<span class="nx">子组件</span>
-    <span class="o">&lt;</span><span class="err">/xxxContext.Provider&gt;</span>
-    
-<span class="mi">3</span><span class="p">)</span> <span class="nx">后代组件读取数据</span><span class="err">：</span>
-
-	<span class="c1">//第一种方式:仅适用于类组件 
-</span><span class="c1"></span>	  <span class="kr">static</span> <span class="nx">contextType</span> <span class="o">=</span> <span class="nx">xxxContext</span>  <span class="c1">// 声明接收context
-</span><span class="c1"></span>	  <span class="k">this</span><span class="p">.</span><span class="nx">context</span> <span class="c1">// 读取context中的value数据
-</span><span class="c1"></span>	  
-	<span class="c1">//第二种方式: 函数组件与类组件都可以
-</span><span class="c1"></span>	  <span class="o">&lt;</span><span class="nx">xxxContext</span><span class="p">.</span><span class="nx">Consumer</span><span class="o">&gt;</span>
-	    <span class="p">{</span>
-	      <span class="nx">value</span> <span class="p">=&gt;</span> <span class="p">(</span> <span class="c1">// value就是context中的value数据
-</span><span class="c1"></span>	        <span class="nx">要显示的内容</span>
-	      <span class="p">)</span>
-	    <span class="p">}</span>
-	  <span class="o">&lt;</span><span class="err">/xxxContext.Consumer&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="mi">1</span><span class="p">)</span> <span class="nx">创建Context容器对象</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">	<span class="kr">const</span> <span class="nx">XxxContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">()</span>  
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="p">)</span> <span class="nx">渲染子组时</span><span class="err">，</span><span class="nx">外面包裹xxxContext</span><span class="p">.</span><span class="nx">Provider</span><span class="p">,</span> <span class="nx">通过value属性给后代组件传递数据</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">	<span class="o">&lt;</span><span class="nx">xxxContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">数据</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">子组件</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/xxxContext.Provider&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="p">)</span> <span class="nx">后代组件读取数据</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//第一种方式:仅适用于类组件 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	  <span class="kr">static</span> <span class="nx">contextType</span> <span class="o">=</span> <span class="nx">xxxContext</span>  <span class="c1">// 声明接收context
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	  <span class="k">this</span><span class="p">.</span><span class="nx">context</span> <span class="c1">// 读取context中的value数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	  
+</span></span><span class="line"><span class="cl">	<span class="c1">//第二种方式: 函数组件与类组件都可以
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	  <span class="o">&lt;</span><span class="nx">xxxContext</span><span class="p">.</span><span class="nx">Consumer</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	      <span class="nx">value</span> <span class="p">=&gt;</span> <span class="p">(</span> <span class="c1">// value就是context中的value数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	        <span class="nx">要显示的内容</span>
+</span></span><span class="line"><span class="cl">	      <span class="p">)</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">&lt;</span><span class="err">/xxxContext.Consumer&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="注意">注意</h3>
 <pre><code>在应用开发中一般不用context, 一般都用它的封装react插件
@@ -520,21 +517,21 @@ C组件: 读取A组件传入的数据显示 {this.props.data}
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 生命周期函数，一旦后台组件报错，就会触发
-</span><span class="c1"></span><span class="kr">static</span> <span class="nx">getDerivedStateFromError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-    <span class="c1">// 在render之前触发
-</span><span class="c1"></span>    <span class="c1">// 返回新的state
-</span><span class="c1"></span>    <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">hasError</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="nx">componentDidCatch</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 统计页面的错误。发送请求发送到后台去
-</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">info</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// 生命周期函数，一旦后台组件报错，就会触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">static</span> <span class="nx">getDerivedStateFromError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 在render之前触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 返回新的state
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">hasError</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">componentDidCatch</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 统计页面的错误。发送请求发送到后台去
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="9-组件通信方式总结">9. 组件通信方式总结</h2>
 <h4 id="组件间的关系">组件间的关系：</h4>
@@ -585,12 +582,12 @@ C组件: 读取A组件传入的数据显示 {this.props.data}
     </div>
 
     <div class="post-nav"><a href="/posts/reacthooks/" class="prev" rel="prev" title="hooks"><i class="fas fa-angle-left fa-fw"></i>hooks</a>
-            <a href="/posts/first_post/" class="next" rel="next" title="想要和我一样吗？">想要和我一样吗？<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/c5-react%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/" class="next" rel="next" title="c5项目经验">c5项目经验<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/yzuxqz" target="_blank">yzuxqz</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.118.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/yzuxqz" target="_blank">yzuxqz</a></span></div>
         </div>
     </footer></div>
 

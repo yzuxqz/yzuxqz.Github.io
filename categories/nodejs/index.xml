@@ -1,0 +1,884 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>nodejs - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</title>
+        <link>http://example.org/categories/nodejs/</link>
+        <description>nodejs - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1336352883@qq.com (yzuxqz)</managingEditor>
+            <webMaster>1336352883@qq.com (yzuxqz)</webMaster><lastBuildDate>Fri, 23 Jul 2021 10:37:53 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/nodejs/" rel="self" type="application/rss+xml" /><item>
+    <title>nodejs</title>
+    <link>http://example.org/posts/nodejs/</link>
+    <pubDate>Fri, 23 Jul 2021 10:37:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/posts/nodejs/</guid>
+    <description><![CDATA[<h1 id="环境变量">环境变量</h1>
+<ol>
+<li>当我们在命令行窗口打开一个文件或调用一个程序时，系统会首先在当前目录下寻找文件程序，如果找到了直接打开，如果没找到会依次到环境变量path的路径中寻找，否则报错，类似于作用域链。</li>
+<li>将一些经常需要访问的程序和文件的路径添加到path中，这样我们就可以在任意位置来访问这些文件和程序了。</li>
+</ol>
+<h1 id="进程和线程">进程和线程</h1>
+<h2 id="进程">进程</h2>
+<ol>
+<li>负责为程序的运行提供必备的环境</li>
+<li>进程就相当于工厂中的车间</li>
+</ol>
+<h2 id="线程">线程</h2>
+<ol>
+<li>线程计算机中的最小的计算单位，线程负责执行进程中的程序</li>
+<li>线程相当于工厂中的工人</li>
+</ol>
+<h3 id="单线程">单线程</h3>
+<ol>
+<li>js是单线程</li>
+</ol>
+<h3 id="多线程">多线程</h3>
+<h1 id="node简介">node简介</h1>
+<ol>
+<li>能够在服务器端运行的JavaScript环境</li>
+<li>处理不了并发量过高的情况，基于web的轻量级应用</li>
+<li>node是单线程，处理速度很快，对服务器硬件要求低。但是处理不了过多的用户，此时只能用分布式。</li>
+</ol>
+<h1 id="node基础">node基础</h1>
+<h2 id="模块化">模块化</h2>
+<ol>
+<li>
+<p>在node中，一个js文件就是一个模块</p>
+</li>
+<li>
+<p>在node中，通过require()函数来引入外部的模块,require()可以传递一个文件的路径作为参数，node将会自动根据该路径来引入外部模块</p>
+</li>
+<li>
+<p>使用require()引入模块以后，该函数会返回一个对象，这个对象代表的是引入的模块</p>
+</li>
+<li>
+<p>在node中，每一个js文件中的js代码都是独立运行在一个函数中的function（）{}，在全局里看不到，所以一个模块中的变量和函数在其他模块中无法访问</p>
+</li>
+<li>
+<p>在node中向外部暴露属性或方法，用exports，将需要暴露给外部的变量或方法设置为exports的属性即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">exports</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="s2">&#34;我是02.module.js中的x&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">exports</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="模块标识">模块标识</h2>
+<ol>
+<li>使用require()引入外部模块时，使用的就是==模块标识==，我们可以通过模块标识来找到指定的模块</li>
+</ol>
+<h3 id="核心模块">核心模块</h3>
+<ol>
+<li>
+<p>由node引擎提供的模块</p>
+</li>
+<li>
+<p>核心模块的标识就是模块的名字</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;fs&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="文件模块">文件模块</h3>
+<ol>
+<li>由用户自己创建的模块</li>
+<li>文件模块的标识就是文件的路径（绝对，相对）</li>
+</ol>
+<h2 id="全局对象">全局对象</h2>
+<ol>
+<li>
+<p>global，它的作用和window类似</p>
+</li>
+<li>
+<p>在全局中创建的变量都会作为global的属性保存</p>
+</li>
+<li>
+<p>在全局中创建的函数都会作为global方法保存</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">{</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="nx">log</span><span class="p">(</span><span class="nx">global</span><span class="p">.</span><span class="nx">a</span><span class="p">)}</span><span class="c1">//argunments.callee当前执行的函数对象
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>node在执行模块中的代码时，它会在代码的最顶部，添加function（exports，require，module，_filename,_dirname）{</p>
+<p>在代码的最底部，添加如下代码 }</p>
+</li>
+<li>
+<p>实际上模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递进了5个实参</p>
+<table>
+<thead>
+<tr>
+<th>实参</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exports</td>
+<td>该对象用于将变量或函数暴露到外部</td>
+</tr>
+<tr>
+<td>require</td>
+<td>函数，用来引入外部的模块</td>
+</tr>
+<tr>
+<td>module</td>
+<td>代表的是当前模块自身，exports就是module的属性，可以使用exports导出，也可以使用module.exports导出</td>
+</tr>
+<tr>
+<td>_filename</td>
+<td>当前模块的完整路径</td>
+</tr>
+<tr>
+<td>_dirname</td>
+<td>当前模块所在文件夹的完整路径</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="exports和moduleexports">exports和module.exports</h2>
+<ol>
+<li>
+<p>通过exports只能使用.的方式来向外暴露内部变量</p>
+</li>
+<li>
+<p>module.exports既可以通过.的方式，也可以直接赋值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">xxx</span> <span class="o">=</span> <span class="nx">xxx</span>
+</span></span><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="包">包</h2>
+<ol>
+<li>包实际上就是一个压缩文件，解压以后还原为目录。符合规范的目录，应该包含
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package.json</td>
+<td>描述文件</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>可执行二进制文件</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>js代码</td>
+</tr>
+<tr>
+<td>doc</td>
+<td>文档</td>
+</tr>
+<tr>
+<td>test</td>
+<td>单元测试</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>2.package.json中的属性含义，json文件中不能写注释</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dependencies</td>
+<td>依赖的其他包</td>
+</tr>
+<tr>
+<td>description</td>
+<td>描述该包的作用</td>
+</tr>
+<tr>
+<td>devDependencies</td>
+<td>开发环境依赖</td>
+</tr>
+<tr>
+<td>name</td>
+<td>名字,用于require</td>
+</tr>
+<tr>
+<td>version</td>
+<td>版本</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>关键字，用于搜索</td>
+</tr>
+<tr>
+<td>maintainers</td>
+<td>贡献者</td>
+</tr>
+<tr>
+<td>contributors</td>
+<td>维护者</td>
+</tr>
+<tr>
+<td>bugs</td>
+<td>提交bug地址</td>
+</tr>
+<tr>
+<td>licenses</td>
+<td>协议</td>
+</tr>
+<tr>
+<td>repositories</td>
+<td>仓库</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td>主页</td>
+</tr>
+<tr>
+<td>os</td>
+<td>系统</td>
+</tr>
+</tbody>
+</table>
+<h2 id="npm简介">npm简介</h2>
+<ol>
+<li>Node Package Manager</li>
+<li>对于node而言，npm帮助其完成了第三方模块的发布，安装和依赖。借助NPM，node与的三方模块之间形成了很好的一个生态系统。</li>
+</ol>
+<h2 id="npm命令">npm命令</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm-v</td>
+<td>查看版本</td>
+</tr>
+<tr>
+<td>npm</td>
+<td>帮助说明</td>
+</tr>
+<tr>
+<td>npm init</td>
+<td>创建package.json文件</td>
+</tr>
+<tr>
+<td>npm search 包名</td>
+<td>搜索模块包</td>
+</tr>
+<tr>
+<td>npm install 包名</td>
+<td>在当前目录安装包</td>
+</tr>
+<tr>
+<td>npm install 包名 -g</td>
+<td>全局模式安装包（一般都是一些工具，在计算机里用的，不是在项目中用的）</td>
+</tr>
+<tr>
+<td>npm install 包名 &ndash;save</td>
+<td>安装包并添加自己初始化的package.json的依赖中</td>
+</tr>
+<tr>
+<td>npm remove 包名</td>
+<td>删除包</td>
+</tr>
+<tr>
+<td>npm install</td>
+<td>下载当前项目所依赖的包</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>在需要安装npm包的目录下用npm init来初始化package.json文件</li>
+<li>通过npm下载的包，通过包名引入即可</li>
+<li>node在使用模块名引入模块时，会首先在当前目录的node_modules中寻找是否含有该模块，如果有，则直接使用，如果没有则再去上一级目录寻找，知道找到为止，直到磁盘的根目录，没有则报错</li>
+</ol>
+<h2 id="buffer缓冲区">Buffer缓冲区</h2>
+<ol>
+<li>
+<p>Buffer的结构和数组很像，操作的方法也和数组类似</p>
+</li>
+<li>
+<p>数组中不能存储二进制文件，而buffer就是专门存储二进制文件的</p>
+</li>
+<li>
+<p>Buffer式node中的核心模块，使用buffer不用引入模块直接使用</p>
+</li>
+<li>
+<p>在buffer中存储的都是二进制数据，但是在显示的时候都是以16进制的形式显示</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">buffer</span><span class="p">.</span><span class="nx">length</span>  <span class="c1">//占用内存的大小，一个汉字占用3个字节，一个字母占用1个字节（8位二进制）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span>	<span class="c1">//字符串的长度
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>buffer的构造函数已经废弃了</p>
+</li>
+</ol>
+<h3 id="创建和写入">创建和写入</h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buffer.alloc(size)</td>
+<td>创建一个指定大小的buffer，且把内存的数据清空，都为0</td>
+</tr>
+<tr>
+<td>Buffer.allocUnsafe(size)</td>
+<td>创建一个指定大小的buffer，但是buffer中可能含有敏感数据，不会清空内存，但是这个性能更好</td>
+</tr>
+<tr>
+<td>Buffer.from(str)</td>
+<td>将一个字符串转化内buffer</td>
+</tr>
+<tr>
+<td>buf.toString</td>
+<td>将缓冲区中的数据转换为字符串</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//创建10个字节的buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">buf2</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">alloc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//通过索引，来操作buffer中的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">buf2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">88</span>
+</span></span><span class="line"><span class="cl"><span class="nx">buf2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl"><span class="nx">buf2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0xaa</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">&#39;Hello Buffer&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//将一个字符串保存到buffer中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">buf</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>==注意==：</p>
+<ol>
+<li>buffer的长度一旦确定，就无法改变，因为buffer是直接操作内存的，alloc(10)就是直接分配10个字节的连续的内存空间</li>
+<li>如果超过8位二进制【0-256），则取后8位</li>
+</ol>
+<h3 id="读取">读取</h3>
+<ol>
+<li>buf[index]</li>
+<li>调用buf.toString()，可以直接把缓冲区中的数据转为字符串</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">buf</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1">//170,虽然村的时候是16进制，但是只要在控制台输出数字，那一定是10进制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">log</span><span class="p">(</span><span class="nx">buf</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span><span class="c1">//输出16进制字符串
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="fs">fs</h2>
+<ol>
+<li>通过node来操作系统中的文件</li>
+</ol>
+<h3 id="引入">引入</h3>
+<ol>
+<li>const fs = reqire(&lsquo;fs&rsquo;)</li>
+</ol>
+<h3 id="同步文件">同步文件</h3>
+<ol>
+<li>
+<p>打开文件</p>
+<p>fs.openSync(path,flags[,mode])</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>要打开文件的路径</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>打开文件要做的操作类型 r:只读的 w:可写的</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>设置文件的操作权限，一般不传</td>
+</tr>
+</tbody>
+</table>
+<p>返回值：该方法会返回文件的描述符作为结果，我们可以通过该描述符来对文件进行各种操作</p>
+</li>
+<li>
+<p>写入内容</p>
+<p>fs.writeSync（fd,string[,position[,ecoding]]）</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fd</td>
+<td>文件的描述符，需要传递要写入的文件的描述符（变量名）</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要写入的内容</td>
+</tr>
+<tr>
+<td>position</td>
+<td>写入的起始位置</td>
+</tr>
+<tr>
+<td>ecoding</td>
+<td>写入的编码，默认是utf-8</td>
+</tr>
+</tbody>
+</table>
+<p>3.关闭文件</p>
+<p>fs.closeSync(fd)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fd</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">openSync</span><span class="p">(</span><span class="s1">&#39;hello.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fs</span><span class="p">.</span><span class="nx">writeSync</span><span class="p">(</span><span class="nx">fd</span><span class="p">,</span><span class="s2">&#34;今天天气真不错&#34;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fs</span><span class="p">.</span><span class="nx">closeSync</span><span class="p">(</span><span class="nx">fd</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="异步文件">异步文件</h3>
+<ol>
+<li>
+<p>打开</p>
+<p>fs.open(path,flags[,mode],callback)</p>
+<p>除了callback是回调函数外，其他和同步相同，两个参数</p>
+<p>err：错误对象，如果没有错误则为null</p>
+<p>fd：文件的描述符</p>
+</li>
+<li>
+<p>写入</p>
+<p>fs.write(fd,callback)</p>
+</li>
+<li>
+<p>关闭</p>
+<p>fs.close(fd,callback)</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fs</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&#34;hello2.txt&#34;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">fd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fs</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">fd</span><span class="p">,</span> <span class="s2">&#34;这是异步回调的内容&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">written</span><span class="p">,</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;写入成功&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//关闭文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">fs</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="nx">fd</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文件已关闭&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="简单文件">简单文件</h3>
+<p>异步：fs.writeFile(file,data[,options],callback)</p>
+<p>==注意==：options是可选项，默认写入w，utf-8,{flag:&lsquo;r&rsquo;}进行修改，mode：文件权限</p>
+<p>同步：fs.writeFileSync(file,data[,options])</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">&#39;hello3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;这是通过writeFile写入的内容&#39;</span><span class="p">,{</span><span class="nx">flag</span><span class="o">:</span><span class="s1">&#39;r&#39;</span><span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;写入成功&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p></p>
+<p>如果要写磁盘的位置用绝对路径</p>
+<h3 id="流式文件">流式文件</h3>
+<ol>
+<li>同步，异步，简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出</li>
+</ol>
+<h4 id="可写流">可写流</h4>
+<p>fs.createWriteStream(path[,options])  //文件路径和配置参数</p>
+<p>只要流存在就可以一直写入文件内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">ws</span><span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="s1">&#39;hello3.txt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//向文件中输出内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;通过可写流写入文件内容&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;通过可写流写入文件内容&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;通过可写流写入文件内容&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="监听">监听</h4>
+<ol>
+<li>
+<p>可以通过监听流的open和close事件来监听流的打开和关闭，用once事件监听</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">ws</span><span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="s1">&#39;hello3.txt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//向文件中输出内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;通过可写流写入文件内容&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;通过可写流写入文件内容&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;通过可写流写入文件内容&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;流打开了&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;流关闭了&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span> <span class="c1">//这里不能用close，相当于拔掉了水管的输出端，end是输入端
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="文件读取">文件读取</h3>
+<p>同步</p>
+<p>异步</p>
+<p>简单</p>
+<p>fs.readFile(path[,options],callback)</p>
+<p>fs.readFileSync(path[,options])  //通过返回值</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>要读取的文件路径</td>
+</tr>
+<tr>
+<td>options</td>
+<td>读取的选项</td>
+</tr>
+<tr>
+<td>callback（err,data）</td>
+<td>回调函数，读取返回的内容</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;hello3.txt&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//读取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//写入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">&#39;hello4.txt&#39;</span><span class="p">,</span><span class="nx">data</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文件写入成功&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>流式</p>
+<ol>
+<li>如果文件小，只读一次</li>
+<li>如果文件大，会分多个buffer读取，每次65536个字节的数据，避免占用大量内存空间</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//可读流
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;hello4.txt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">rs</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可读流打开&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nx">rs</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可读流关闭&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//如果要读取可读流中的数据，必须绑定一个data事件，会自动读取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;data&#34;</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>读取后写入其他文件，注意可写流要在可读流关闭时关闭</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//可读流
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;hello4.txt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//可写流
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">ws</span>  <span class="o">=</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="s1">&#39;hello5.txt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">rs</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可读流打开&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nx">rs</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可读流关闭&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可写流打开&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ws</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可写流关闭&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//如果要读取可读流中的数据，必须绑定一个data事件，会自动读取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;data&#34;</span><span class="p">,</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//将读取的数据写入可写流中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">ws</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//数据写入完毕关闭可写流，在可读流关闭时关闭
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>简单的写法</p>
+<p>rs.pipe(ws)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//可读流
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;hello4.txt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//pipe（）可以将可读流中的数据直接输出到可写流中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">rs</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">ws</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="其他方法">其他方法</h3>
+<p></p>
+<p>callback参数err，data</p>
+<p></p>
+<h1 id="httpsrawgithubusercontentcomyzuxqzpic-bedmasternotes-imgfse585b6e4bb963png"></h1>
+<p>watchFile中的functionn（curr,prev）</p>
+<p>这两个参数都是stats对象，可以用属性</p>
+<p>options是对象，可以修改文件的监视时间频率</p>
+<h1 id="formidable模块">formidable模块</h1>
+<p><a href="https://www.cnblogs.com/abab301/p/9489000.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/abab301/p/9489000.html</a></p>
+<h1 id="bcrypt加密">bcrypt加密</h1>
+<p></p>
+<p></p>
+<p></p>
+<h1 id="文件上传">文件上传</h1>
+<p>前端读取</p>
+<p></p>
+<p>后端</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p>==注意==：</p>
+<ol>
+<li>不能直接保存path，用户是通过url访问服务器的资源，url的/实际就是服务器端的public文件夹，所以要split（‘public’）</li>
+</ol>
+]]></description>
+</item></channel>
+</rss>

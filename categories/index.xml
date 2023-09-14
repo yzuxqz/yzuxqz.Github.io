@@ -3,5 +3,76 @@
         <title>Categories - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</title>
         <link>http://example.org/categories/</link>
         <description>Categories - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /></channel>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1336352883@qq.com (yzuxqz)</managingEditor>
+            <webMaster>1336352883@qq.com (yzuxqz)</webMaster><lastBuildDate>Thu, 14 Sep 2023 13:01:53 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>lcu</title>
+    <link>http://example.org/categories/lcu/</link>
+    <pubDate>Thu, 14 Sep 2023 13:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/lcu/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>lol</title>
+    <link>http://example.org/categories/lol/</link>
+    <pubDate>Thu, 14 Sep 2023 13:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/lol/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>smartTeemo</title>
+    <link>http://example.org/categories/smartteemo/</link>
+    <pubDate>Thu, 14 Sep 2023 13:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/smartteemo/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>vue</title>
+    <link>http://example.org/categories/vue/</link>
+    <pubDate>Fri, 11 Feb 2022 12:31:50 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/vue/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>自拍</title>
+    <link>http://example.org/categories/%E8%87%AA%E6%8B%8D/</link>
+    <pubDate>Tue, 09 Nov 2021 17:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/%E8%87%AA%E6%8B%8D/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>c5</title>
+    <link>http://example.org/categories/c5/</link>
+    <pubDate>Sat, 04 Sep 2021 17:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/c5/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>react</title>
+    <link>http://example.org/categories/react/</link>
+    <pubDate>Sat, 04 Sep 2021 17:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/react/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>typescript</title>
+    <link>http://example.org/categories/typescript/</link>
+    <pubDate>Sat, 21 Aug 2021 10:42:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/typescript/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>webapck</title>
+    <link>http://example.org/categories/webapck/</link>
+    <pubDate>Thu, 05 Aug 2021 10:41:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/webapck/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>nodejs</title>
+    <link>http://example.org/categories/nodejs/</link>
+    <pubDate>Fri, 23 Jul 2021 10:37:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/categories/nodejs/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>

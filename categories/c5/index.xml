@@ -1,0 +1,47 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>c5 - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</title>
+        <link>http://example.org/categories/c5/</link>
+        <description>c5 - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1336352883@qq.com (yzuxqz)</managingEditor>
+            <webMaster>1336352883@qq.com (yzuxqz)</webMaster><lastBuildDate>Sat, 04 Sep 2021 17:01:53 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/c5/" rel="self" type="application/rss+xml" /><item>
+    <title>c5项目经验</title>
+    <link>http://example.org/posts/c5-react%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/</link>
+    <pubDate>Sat, 04 Sep 2021 17:01:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/posts/c5-react%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/</guid>
+    <description><![CDATA[<h3 id="antd的global全局样式修改">antd的global全局样式修改</h3>
+<p>在umi.ts中引入的全局less文件修改默认样式时不需要写global，在组件中单独使用less文件时用styles.xxx，此时浏览器会对class名进行编译</p>
+<h3 id="antd3x中的tooltip没有color属性如何改变背景色">antd3.x中的tooltip没有color属性如何改变背景色</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">ant</span><span class="o">-</span><span class="nx">tooltip</span><span class="o">-</span><span class="nx">arrow</span><span class="o">::</span><span class="nx">before</span><span class="p">{</span> <span class="c1">//箭头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="err">#</span><span class="nx">FFFFFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">ant</span><span class="o">-</span><span class="nx">tooltip</span><span class="o">-</span><span class="nx">inner</span><span class="p">{</span>  <span class="c1">//框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="err">#</span><span class="nx">ffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">padding</span><span class="o">:</span> <span class="mi">14</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="tooltip没有挂载到父元素或挂载到父元素后样式出错">tooltip没有挂载到父元素，或挂载到父元素后样式出错</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">getPopupContainer</span><span class="o">=</span><span class="p">{</span><span class="nx">node</span> <span class="p">=&gt;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;modalContent&#39;</span><span class="p">)}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,811 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mysql - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</title>
+        <link>http://example.org/categories/mysql/</link>
+        <description>mysql - 分类 - 肉蛋葱鸡肉粥🍛的博客☕</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1336352883@qq.com (yzuxqz)</managingEditor>
+            <webMaster>1336352883@qq.com (yzuxqz)</webMaster><lastBuildDate>Thu, 24 Jun 2021 10:31:53 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/mysql/" rel="self" type="application/rss+xml" /><item>
+    <title>mysql</title>
+    <link>http://example.org/posts/mysql/</link>
+    <pubDate>Thu, 24 Jun 2021 10:31:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/posts/mysql/</guid>
+    <description><![CDATA[<h1 id="概念">概念</h1>
+<h2 id="db">DB</h2>
+<p>database数据库:保存一系列有组织的数据</p>
+<h2 id="dbms">DBMS</h2>
+<p>Darabase Management System数据库管理系统。数据库是通过DBMS创建和操作的容器</p>
+<h2 id="sql">SQL</h2>
+<p>Structure Query Lannguage结构化查询语句：用来和数据库通信的语言</p>
+<h1 id="特点">特点</h1>
+<p></p>
+<h1 id="启动">启动</h1>
+<ol>
+<li>右击计算机，管理，服务</li>
+</ol>
+<p></p>
+<h1 id="登录">登录</h1>
+<p>mysql -h 主机名 -P 端口号（默认3306） -u 用户 -p密码</p>
+<p></p>
+<p>本机登录简写：</p>
+<p></p>
+<h1 id="常见命令">常见命令</h1>
+<p>登录数据库后使用</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>show databases；</td>
+<td>显示数据库中的表</td>
+</tr>
+<tr>
+<td>use 库名；</td>
+<td>进入库</td>
+</tr>
+<tr>
+<td>show tables；</td>
+<td>显示进入的库中有哪些表</td>
+</tr>
+<tr>
+<td>show tables from 库名；</td>
+<td>直接显示库中的表，但是并没有进入库</td>
+</tr>
+<tr>
+<td>select database()；</td>
+<td>查看当前在那个库中</td>
+</tr>
+<tr>
+<td>desc 表名；</td>
+<td>查看表结构</td>
+</tr>
+<tr>
+<td>create tables 表名(  列名 列类型，列名 列类型)</td>
+<td>创建表</td>
+</tr>
+<tr>
+<td>select version()；</td>
+<td>查看服务器版本</td>
+</tr>
+</tbody>
+</table>
+<h1 id="语法规范">语法规范</h1>
+<ol>
+<li>
+<p>不区分大小写，但是建议关键字大写，表名，列名小写</p>
+</li>
+<li>
+<p>每条命令分号结尾</p>
+</li>
+<li>
+<p>可以缩进换行（不写分号回车就是换行）</p>
+</li>
+<li>
+<p>注释</p>
+<p>​	单行注释：#注释文字 或者 &ndash; 注释文字</p>
+<p>​	多行注释：/ <em>注释文字</em>  /</p>
+</li>
+</ol>
+<h1 id="dql">DQL</h1>
+<p>database query language</p>
+<h3 id="基础查询">基础查询</h3>
+<ol>
+<li>
+<p>select 查询列表 from 表名；</p>
+<p>==特点==：</p>
+<ol>
+<li>查询列表可以是：表中的字段，常量值，表达式，函数，查询的结果可以是一个虚拟的表格</li>
+</ol>
+</li>
+</ol>
+<h4 id="查询表中的单个字段">查询表中的单个字段</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="err">字段名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">表名</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="查询表中的多个字段">查询表中的多个字段</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="err">字段名</span><span class="mi">1</span><span class="p">,</span><span class="err">字段名</span><span class="mi">2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">表名</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="查询表中的所有字段">查询表中的所有字段</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">表名</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>==注意==：</p>
+<ol>
+<li>在查询前 use 库名；</li>
+<li>反单引号用来区分关键字和字段</li>
+</ol>
+<h4 id="查询常量">查询常量</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="s2">&#34;john&#34;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="查询表达式">查询表达式</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="mi">100</span><span class="o">*</span><span class="mi">98</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="查询函数">查询函数</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="nf">VERSION</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="起别名">起别名</h4>
+<ol>
+<li>便于理解</li>
+<li>如果查询的字段有重名的情况，用别名可以区分开</li>
+</ol>
+<p>使用AS:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">==</span><span class="k">AS</span><span class="o">==</span><span class="w"> </span><span class="err">姓</span><span class="p">,</span><span class="n">first_name</span><span class="w"> </span><span class="o">==</span><span class="k">AS</span><span class="o">==</span><span class="w"> </span><span class="err">名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用空格：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="err">姓</span><span class="p">,</span><span class="n">first_name</span><span class="w"> </span><span class="err">名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>==注意==：</p>
+<ol>
+<li>如果别名中有关键字，要加双引号</li>
+</ol>
+<h4 id="去重">去重</h4>
+<p>关键字 DISTINCT</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="号的作用">+号的作用</h4>
+<ol>
+<li>
+<p>只是运算符</p>
+</li>
+<li>
+<p>在运算时会将字符型转为数值型</p>
+<p>如果转换成功，则继续做加法</p>
+<p>如果转换失败，则字符型转为0，再做加法</p>
+</li>
+<li>
+<p>只要有null，结果为null</p>
+</li>
+</ol>
+<h4 id="concat">CONCAT</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">	</span><span class="nf">CONCAT</span><span class="p">(</span><span class="err">字段名</span><span class="mi">1</span><span class="p">,</span><span class="err">字段名</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">姓名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="ifnull">IFNULL</h4>
+<p>参数1：原来的字段名</p>
+<p>参数2：如果字段值为null，修改为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">	</span><span class="n">IFNULL</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">奖金率</span><span class="p">,</span><span class="n">commission_pct</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="条件查询">条件查询</h3>
+<ol>
+<li>select 查询列表 from 表名 where 筛选条件</li>
+</ol>
+<h4 id="分类">分类</h4>
+<ol>
+<li>
+<p>按条件表达式筛选</p>
+<p>条件运算符：&gt; &lt; = != &lt;&gt; &gt;= &lt;=</p>
+</li>
+<li>
+<p>按逻辑表达式筛选</p>
+<p>逻辑运算符：&amp;&amp; || ！ and or not</p>
+</li>
+<li>
+<p>模糊查询</p>
+<p>like</p>
+<p>between and</p>
+<p>in</p>
+<p>isnull</p>
+</li>
+</ol>
+<h4 id="按条件表达式筛选">按条件表达式筛选</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="o">&gt;</span><span class="mi">12000</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="o">`</span><span class="n">department_id</span><span class="o">`</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">`</span><span class="n">department_id</span><span class="o">`&lt;&gt;</span><span class="mi">90</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="按逻辑表达式筛选">按逻辑表达式筛选</h4>
+<p>作用：用于连接条件表达式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">commission_pct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="o">&gt;=</span><span class="mi">10000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">salary</span><span class="o">&lt;=</span><span class="mi">20000</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">commission_pct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">`</span><span class="n">department_id</span><span class="o">`&lt;</span><span class="mi">90</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="o">`</span><span class="n">department_id</span><span class="o">`&gt;</span><span class="mi">110</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">salary</span><span class="o">&gt;</span><span class="mi">15000</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="err">相当于</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">commission_pct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="p">(</span><span class="o">`</span><span class="n">department_id</span><span class="o">`&gt;=</span><span class="mi">90</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="o">`</span><span class="n">department_id</span><span class="o">`&lt;=</span><span class="mi">110</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">salary</span><span class="o">&gt;</span><span class="mi">15000</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="模糊查询">模糊查询</h3>
+<h4 id="like">like</h4>
+<p>一般和通配符搭配式使用，通配符：</p>
+<ol>
+<li>% ：任意多个字符，包含0个字符</li>
+<li>_：任意单个字符，一个下划线表示一个字符</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#员工名字包含字符a
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%a%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#员工名中第三个字符为a，第五个字符为a
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">salary</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;__e_a%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#员工名中第二个字符为下划线的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;_\_%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>==注意==：</p>
+<ol>
+<li>如果查询的字符为下划线，要转义下划线</li>
+</ol>
+<h4 id="between-and">between and</h4>
+<ol>
+<li>提高语句的简洁度</li>
+<li>包含临界值</li>
+<li>两个临界值不能换顺序</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#员工编号100-120
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">`</span><span class="n">employee_id</span><span class="o">`&gt;=</span><span class="mi">100</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="o">`</span><span class="n">employee_id</span><span class="o">`&lt;=</span><span class="mi">120</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">`</span><span class="n">employee_id</span><span class="o">`</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="in">in</h4>
+<ol>
+<li>用于判断某字段的值是否属于in列表中的某一项</li>
+<li>特点：
+<ol>
+<li>使用in比使用or提高了语句简洁度</li>
+<li>in列表的值类型必须统一或兼容</li>
+<li>不能使用通配符</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#工种编号是 IT_	PROG，AD_VP其中一个的员工信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">job_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">job_id</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="s1">&#39;IT_PROT&#39;</span><span class="p">,</span><span class="s1">&#39;AD_VP&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="is-null">is null</h4>
+<p>只能判断null值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#没有奖金的员工
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">commission_pct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">commission_pct</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="no">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#有将金
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="no">NULL</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="安全等于">安全等于</h4>
+<p>&lt;=&gt;</p>
+<p>不仅仅能查null值，包括其他的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#没有奖金的员工
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="n">commission_pct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">commission_pct</span><span class="w"> </span><span class="o">&lt;=&gt;</span><span class="no">NULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="排序查询">排序查询</h3>
+<ol>
+<li>order by可以支持单个字段，多个字段，表达式，函数，别名</li>
+<li>asc代表升序，desc代表降序，如果不写，默认是升序</li>
+<li>order by子句一般是放在查询语句的最后面，limit子句除外</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#排序查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#DESC是从高到低
+</span></span></span><span class="line"><span class="cl"><span class="c1">#ASC是从低到高，如果不写默认是升序
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="按表达式排序">按表达式排序</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">,</span><span class="n">salary</span><span class="o">*</span><span class="mi">12</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="nf">IFNULL</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">年薪</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="o">*</span><span class="mi">12</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="nf">IFNULL</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="按别名排序">按别名排序</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">,</span><span class="n">salary</span><span class="o">*</span><span class="mi">12</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="nf">IFNULL</span><span class="p">(</span><span class="n">commission_pct</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">年薪</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">年薪</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="按函数排序">按函数排序</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#根据姓名字节长度进行排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">LENGTH</span><span class="p">(</span><span class="o">`</span><span class="n">last_name</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">字节长度</span><span class="p">,</span><span class="o">`</span><span class="n">last_name</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="nf">LENGTH</span><span class="p">(</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="排序多个字段">排序多个字段</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#多个字段排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="o">`</span><span class="n">employee_id</span><span class="o">`</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="dml">DML</h1>
+<h1 id="mysql函数">MySQL函数</h1>
+<h2 id="单行函数">单行函数</h2>
+<h3 id="字符函数">字符函数</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length(字段名)</td>
+<td>获取字段的长度</td>
+</tr>
+<tr>
+<td>concat(字段名1，字段名2)</td>
+<td>连接字段</td>
+</tr>
+<tr>
+<td>upper(字段名)</td>
+<td>大写</td>
+</tr>
+<tr>
+<td>lower(字段名)</td>
+<td>小写</td>
+</tr>
+<tr>
+<td>substr(字段名，索引)</td>
+<td>截取</td>
+</tr>
+<tr>
+<td>instr（字段名，子串字段）</td>
+<td>返回子串第一次出现的索引</td>
+</tr>
+<tr>
+<td>trim（x from 字段名）</td>
+<td>去除首尾字符</td>
+</tr>
+<tr>
+<td>lpad（字段，指定长度，指定字符）</td>
+<td>用指定字符填充指定长度</td>
+</tr>
+<tr>
+<td>replace（字段，要替换的，替换为）</td>
+<td></td>
+</tr>
+<tr>
+<td>ifnull(字段名，若为空替换为)</td>
+<td>判断为空，替换为</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#字符函数
+</span></span></span><span class="line"><span class="cl"><span class="c1">#upper,lower
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">	</span><span class="nf">CONCAT</span><span class="p">(</span><span class="nf">UPPER</span><span class="p">(</span><span class="n">last_name</span><span class="p">),</span><span class="nf">LOWER</span><span class="p">(</span><span class="n">first_name</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">姓名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#substr,substring
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">注意：索引从</span><span class="mi">1</span><span class="err">开始</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#截取索引处后面所有字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">SUBSTR</span><span class="p">(</span><span class="s1">&#39;李莫愁爱上了陆展元&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#截取指定长度的字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">	</span><span class="nf">SUBSTR</span><span class="p">(</span><span class="s1">&#39;李莫愁爱上了陆展元&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#姓名首字母大写，其他字符小写，然后_拼接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">CONCAT</span><span class="p">(</span><span class="nf">UPPER</span><span class="p">(</span><span class="nf">SUBSTR</span><span class="p">(</span><span class="o">`</span><span class="n">last_name</span><span class="o">`</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="nf">LOWER</span><span class="p">(</span><span class="nf">SUBSTR</span><span class="p">(</span><span class="o">`</span><span class="n">last_name</span><span class="o">`</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span><span class="w">	 </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#instr 返回子串第一次出现的索引，如果找不到返回0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">INSTR</span><span class="p">(</span><span class="s1">&#39;杨不悔爱上了殷六侠&#39;</span><span class="p">,</span><span class="s1">&#39;殷六侠&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#trim 去除首位字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">LENGTH</span><span class="p">(</span><span class="nf">TRIM</span><span class="p">(</span><span class="s1">&#39;    张翠删      &#39;</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">TRIM</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;aaaaaaa张aaaaaaaaa翠山aaaaaaaaaaaaaa&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#lpad 用指定的字符实现左填充指定长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">LPAD</span><span class="p">(</span><span class="s1">&#39;殷素素&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#rpad
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">RPAD</span><span class="p">(</span><span class="s1">&#39;殷素素&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#replace 替换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">(</span><span class="s1">&#39;aaabbbccc&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="数学函数">数学函数</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>round</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>cell</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>floor</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>truncate（1.65，1）</td>
+<td>截断，小数点后保留多少位</td>
+</tr>
+<tr>
+<td>MOD(字段1，字段2)</td>
+<td>取余</td>
+</tr>
+</tbody>
+</table>
+<h3 id="日期函数">日期函数</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>now</td>
+<td>当前日期和时间</td>
+</tr>
+<tr>
+<td>curdate</td>
+<td>日期</td>
+</tr>
+<tr>
+<td>curtime</td>
+<td>时间</td>
+</tr>
+<tr>
+<td>year</td>
+<td>年</td>
+</tr>
+<tr>
+<td>month</td>
+<td>月</td>
+</tr>
+<tr>
+<td>monthname</td>
+<td>月的英文</td>
+</tr>
+<tr>
+<td>str_to_date</td>
+<td>字符转为指定格式日期</td>
+</tr>
+<tr>
+<td>date_format</td>
+<td>日期抓为字符</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">#日期函数
+</span></span></span><span class="line"><span class="cl"><span class="c1">#日期加时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">NOW</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#日期
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">CURDATE</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">CURTIME</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#获取指定的部分，年，月，日，小时，分钟，秒
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">	</span><span class="kt">YEAR</span><span class="p">(</span><span class="nf">NOW</span><span class="p">())</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">年</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="kt">YEAR</span><span class="p">(</span><span class="s1">&#39;1998-1-1&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">年</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">MONTH</span><span class="p">(</span><span class="nf">NOW</span><span class="p">())</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">月</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">MONTHNAME</span><span class="p">(</span><span class="nf">NOW</span><span class="p">())</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">月</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#str_to_date 将字符通过指定的格式转换成日期
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="nf">STR_TO_DATE</span><span class="p">(</span><span class="s1">&#39;1999-3-2&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%c-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#查询入职日期为1992-4-3的员工信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">hiredate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1992-4-3&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">hiredate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">STR_TO_DATE</span><span class="p">(</span><span class="s1">&#39;4-3 1992&#39;</span><span class="p">,</span><span class="s1">&#39;%c-%d %Y&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#date_format 将日期转换成字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">	</span><span class="nf">DATE_FORMAT</span><span class="p">(</span><span class="nf">NOW</span><span class="p">(),</span><span class="s1">&#39;%y年%m月%d日&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">out_put</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">#查询有将金的员工名和入职日期
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="nf">DATE_FORMAT</span><span class="p">(</span><span class="n">hiredate</span><span class="p">,</span><span class="s1">&#39;%m月%d日 %y年&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">入职日期</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">commission_pct</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="no">NULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="其他函数">其他函数</h3>
+<h3 id="流程控制函数">流程控制函数</h3>
+<h2 id="分组函数">分组函数</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="ddl">DDL</h1>
+<h2 id="库的管理">库的管理</h2>
+<h3 id="创建">创建</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">create database 库名;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="修改">修改</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RENAME DATABASE books TO 新库名;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="删除">删除</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DROP DATABASE IF EXISTS 库名;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="表的管理">表的管理</h2>
+<h3 id="创建-1">创建</h3>
+<p></p>
+<h3 id="修改删除">修改&amp;删除</h3>
+<p></p>
+<p></p>
+<h3 id="复制">复制</h3>
+<p></p>
+<h1 id="数据类型">数据类型</h1>
+<p></p>
+<h2 id="整型">整型</h2>
+<p></p>
+<p>设置无符号</p>
+<p></p>
+<h3 id="浮点型">浮点型</h3>
+<p></p>
+<p></p>
+<p>注意：如果是decimal，则M默认为10，D默认为0，如果是float或者double根据字符插入的精度来改变精度</p>
+<h2 id="字符型">字符型</h2>
+<p></p>
+<p></p>
+<p>区别：char不可变，varchar可变。char更耗费空间，但是char效率更高。所有固定时用char，有变化的用varchar</p>
+<p></p>
+<h2 id="日期型">日期型</h2>
+<p></p>
+<p></p>
+<h1 id="约束">约束</h1>
+<p></p>
+<h2 id="列级约束">列级约束</h2>
+<p></p>
+<h2 id="表级约束">表级约束</h2>
+<p></p>
+<p>注意：主键和唯一的区别：</p>
+<p></p>
+<h2 id="外键的特点">外键的特点</h2>
+<p></p>
+<h1 id="tcl">TCL</h1>
+<h2 id="事务">事务</h2>
+<p></p>
+<h2 id="存储引擎">存储引擎</h2>
+<p></p>
+<h2 id="事务的特性">事务的特性</h2>
+<p></p>
+<h2 id="使用步骤">使用步骤</h2>
+<p></p>
+<h2 id="事务隔离">事务隔离</h2>
+<p></p>
+<p></p>
+<p></p>
+<h2 id="设置隔离级别">设置隔离级别</h2>
+<p></p>
+<h2 id="savepoint设置回滚点">savepoint设置回滚点</h2>
+<p></p>
+<p>25号删了，28号未删除</p>
+]]></description>
+</item></channel>
+</rss>
